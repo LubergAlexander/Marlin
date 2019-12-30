@@ -740,7 +740,7 @@
     #define TEMP_SENSOR_1 1000
   #endif
 #elif ANY(HotendStock, CrealityThermistor)
-  #define TEMP_SENSOR_0 1
+  #define TEMP_SENSOR_0 11
   #if(ENABLED(Dual_ChimeraDualNozzle))
     #define TEMP_SENSOR_1 1
   #endif
@@ -846,9 +846,9 @@
 
 #if ENABLED(HotendStock)
   #if ANY(MachineCR10SPro, MachineCR10Max)
-    #define DEFAULT_Kp 25.25
-    #define DEFAULT_Ki 2.17
-    #define DEFAULT_Kd 73.44
+    #define DEFAULT_Kp 24.40
+    #define DEFAULT_Ki 2.89
+    #define DEFAULT_Kd 51.4
   #elif ENABLED(MachineEnder5Plus)
     #define  DEFAULT_Kp 14.72
     #define  DEFAULT_Ki 0.89
@@ -936,6 +936,11 @@
     #define  DEFAULT_bedKp 690.34
     #define  DEFAULT_bedKi 111.47
     #define  DEFAULT_bedKd 1068.83
+  #elif ENABLED(MachineCR10SPro)
+    // Custom calibration for 50C 10 cycles
+    #define DEFAULT_bedKp 315.63
+    #define DEFAULT_bedKi 54.27
+    #define DEFAULT_bedKd 458.9
   #else
     #define  DEFAULT_bedKp 690.34
     #define  DEFAULT_bedKi 111.47
@@ -1192,7 +1197,7 @@
 #elif ANY(EZRstruder, MachineCR10SV2)
   #define EStepsmm 93
 #elif ANY(MachineCR10SPro, MachineCR10Max)
-  #define EStepsmm 140
+  #define EStepsmm 142.68
 #elif ENABLED(MachineCR2020)
   #define EStepsmm 113
 #else
@@ -1201,11 +1206,13 @@
 
 #if ENABLED(MachineEnder5Plus)
   #define ZStepsmm 800
+#elif ENABLED(MachineCR10SPro)
+  #define ZStepsmm 401.83
 #else
   #define ZStepsmm 400
 #endif
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, ZStepsmm, EStepsmm }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80.08, 80.51, ZStepsmm, EStepsmm }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1469,7 +1476,7 @@
      #define NOZZLE_TO_PROBE_OFFSET { -44, -10, 0 }
    #endif
 #elif ANY(MachineCR10SPro, MachineCR10Max) && ENABLED(HotendStock)
-  #define NOZZLE_TO_PROBE_OFFSET { -27, 0, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -9, 0 }
 #elif ENABLED(MachineCR10SV2)
   #if ENABLED(ABL_BLTOUCH)
     #define NOZZLE_TO_PROBE_OFFSET { 45, 7, 0 }
