@@ -455,11 +455,11 @@
 #endif
 
 // Name displayed in the LCD "Ready" message and Info menu
-//#define CUSTOM_MACHINE_NAME "3D Printer"
+#define CUSTOM_MACHINE_NAME "Luberg Designs"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like http://www.uuidgenerator.net/version4
-//#define MACHINE_UUID "00000000-0000-0000-0000-000000000000"
+#define MACHINE_UUID "274dc2cf-15e9-4bec-8ae9-3f8b5e1f2892"
 
 // @section extruder
 
@@ -846,9 +846,11 @@
 
 #if ENABLED(HotendStock)
   #if ANY(MachineCR10SPro, MachineCR10Max)
-    #define DEFAULT_Kp 24.40
-    #define DEFAULT_Ki 2.89
-    #define DEFAULT_Kd 51.47
+    // Custom calibration to 200C for 8 cycles
+    // M303 E0 S200 C8
+    #define DEFAULT_Kp 26.34
+    #define DEFAULT_Ki 3.53
+    #define DEFAULT_Kd 49.10
   #elif ENABLED(MachineEnder5Plus)
     #define  DEFAULT_Kp 14.72
     #define  DEFAULT_Ki 0.89
@@ -937,10 +939,11 @@
     #define  DEFAULT_bedKi 111.47
     #define  DEFAULT_bedKd 1068.83
   #elif ENABLED(MachineCR10SPro)
-    // Custom calibration for 50C 10 cycles
-    #define DEFAULT_bedKp 315.63
-    #define DEFAULT_bedKi 54.27
-    #define DEFAULT_bedKd 458.93
+    // Custom calibration for 60C 8 cycles
+    // M303 E-1 C8 S60
+    #define DEFAULT_bedKp 171.28
+    #define DEFAULT_bedKi 33.19
+    #define DEFAULT_bedKd 589.33
   #else
     #define  DEFAULT_bedKp 690.34
     #define  DEFAULT_bedKi 111.47
@@ -1476,7 +1479,7 @@
      #define NOZZLE_TO_PROBE_OFFSET { -44, -10, 0 }
    #endif
 #elif ANY(MachineCR10SPro, MachineCR10Max) && ENABLED(HotendStock)
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -9, 0 }
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -9, -2.20 }
 #elif ENABLED(MachineCR10SV2)
   #if ENABLED(ABL_BLTOUCH)
     #define NOZZLE_TO_PROBE_OFFSET { 45, 7, 0 }
