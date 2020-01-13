@@ -1200,7 +1200,7 @@
 #elif ANY(EZRstruder, MachineCR10SV2)
   #define EStepsmm 93
 #elif ANY(MachineCR10SPro, MachineCR10Max)
-  #define EStepsmm 142.62
+  #define EStepsmm 139.11
 #elif ENABLED(MachineCR2020)
   #define EStepsmm 113
 #else
@@ -1210,12 +1210,12 @@
 #if ENABLED(MachineEnder5Plus)
   #define ZStepsmm 800
 #elif ENABLED(MachineCR10SPro)
-  #define ZStepsmm 398.24
+  #define ZStepsmm 397.45
 #else
   #define ZStepsmm 400
 #endif
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.97, 80.38, ZStepsmm, EStepsmm }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 79.41, 79.42, ZStepsmm, EStepsmm }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1479,7 +1479,7 @@
      #define NOZZLE_TO_PROBE_OFFSET { -44, -10, 0 }
    #endif
 #elif ANY(MachineCR10SPro, MachineCR10Max) && ENABLED(HotendStock)
-  #define NOZZLE_TO_PROBE_OFFSET { -40, -9, -2.20 }
+  #define NOZZLE_TO_PROBE_OFFSET { -40, -9, -1.93 }
 #elif ENABLED(MachineCR10SV2)
   #if ENABLED(ABL_BLTOUCH)
     #define NOZZLE_TO_PROBE_OFFSET { 45, 7, 0 }
